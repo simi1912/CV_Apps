@@ -32,7 +32,7 @@ public class SortFactory {
         List<String> arr = new ArrayList<>();
         registred.keySet().stream().forEach(i->arr.add(i));
         String[] toReturn = new String[ (int) registred.keySet().stream().count()];
-        for(int i=0;i<=arr.size();i++){
+        for(int i=0; i<=arr.size(); i++){
             toReturn[i]=arr.get(i);
         }
         return toReturn;
