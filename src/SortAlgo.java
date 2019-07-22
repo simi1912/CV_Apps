@@ -1,5 +1,4 @@
 public interface SortAlgo {
 
-    public abstract Number[] sort(Number[] arr);
-
+    int[] sort(int[] arr);
 }

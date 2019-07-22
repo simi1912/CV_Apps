@@ -1,8 +1,8 @@
 public class MergeSort implements SortAlgo{
 
     @Override
-    public Number[] sort(Number[] arr){
-        return new Number[0];
+    public int[] sort(int[] arr){
+        return new int[0];
     }
 
 }
