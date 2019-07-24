@@ -10,7 +10,7 @@ public class InsertionSort implements SortAlgo{
             int toInsert = arr[i];
             int sortedTo = i-1;
 
-            while(sortedTo>=0 && arr[sortedTo]>arr[i]){
+            while(sortedTo>=0 && arr[sortedTo]>toInsert){
 
                 arr[sortedTo+1]=arr[sortedTo];
                 sortedTo--;
