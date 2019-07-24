@@ -5,36 +5,31 @@ public class MergeSort implements SortAlgo{
     @Override
     public int[] sort(int[] arr){
 
-
         this.arr=arr;
-
-       partition(arr, 0, this.arr.length-1);
-
+        partition(0, this.arr.length-1);
         return this.arr;
-
     }
 
-    private void partition(int[] arr, int l, int r){
+    private void partition( int l, int r){
 
-        if(l==r){
+        if(l<r){
+            int n = (int) (r+l) / 2;
 
-            int n = (r-l) / 2;
+            partition(l, n);
+            partition(n + 1, r);
 
-            partition(arr, l, n);
-            partition(arr, n + 1, r);
-
-            int nl = n+1;
+            int nl = n-l+1;
             int nr = r-n;
 
             int[] left = new int[nl];
             int[] right = new int[nr];
 
-            for(int i =l; i<=n; i++){
+            for(int i=0; i<=n-l; i++){
                 left[i] = arr[l+i];
             }
 
-            for(int i=n+1; i<r-n; i++){
-                right[i-(n+1)]=arr[n+1+i];
+            for(int i=0; i<r-n; i++){
+                right[i]=arr[n+1+i];
             }
 
             merge(left, right, l, n, r);
@@ -43,35 +38,38 @@ public class MergeSort implements SortAlgo{
 
     private void merge(int[] left, int[] right, int l, int n, int r){
 
-        int i=0;
+        int i=l;
         int j=0;
         int k=0;
 
-        while(i<left.length || i<right.length){
+        while(j<left.length ^ k<right.length){
+//
 
-            if(left[i]<right[i]){
-                arr[l+i] = left[j];
+            if(left[j]<right[k]){
+
+                arr[i] = left[j];
                 j++;
             }else{
-                arr[l+i]= right[k];
+                arr[i]= right[k];
                 k++;
             }
             i++;
         }
 
-        if(j==0){
+        if(j == left.length-1){
             while (k<right.length){
 
-                arr[l+i]=right[k];
+                arr[i]=right[k];
                 k++;
+                i++;
             }
         }else{
             while (j<left.length){
 
-                arr[l+i]=left[j];
+                arr[i]=left[j];
                 j++;
+                i++;
             }
         }
     }
-
 }
