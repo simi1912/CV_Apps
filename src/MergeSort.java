@@ -13,6 +13,7 @@ public class MergeSort implements SortAlgo{
     private void partition( int l, int r){
 
         if(l<r){
+
             int n = (int) (r+l) / 2;
 
             partition(l, n);
@@ -24,11 +25,11 @@ public class MergeSort implements SortAlgo{
             int[] left = new int[nl];
             int[] right = new int[nr];
 
-            for(int i=0; i<=n-l; i++){
+            for(int i=0; i<nl; i++){
                 left[i] = arr[l+i];
             }
 
-            for(int i=0; i<r-n; i++){
+            for(int i=0; i<nr; i++){
                 right[i]=arr[n+1+i];
             }
 
@@ -42,8 +43,7 @@ public class MergeSort implements SortAlgo{
         int j=0;
         int k=0;
 
-        while(j<left.length ^ k<right.length){
-//
+        while(j<left.length && k<right.length){
 
             if(left[j]<right[k]){
 
@@ -56,20 +56,18 @@ public class MergeSort implements SortAlgo{
             i++;
         }
 
-        if(j == left.length-1){
-            while (k<right.length){
+        while (k<right.length) {
 
-                arr[i]=right[k];
-                k++;
-                i++;
-            }
-        }else{
-            while (j<left.length){
+            arr[i] = right[k];
+            k++;
+            i++;
+        }
+        while (j<left.length){
 
-                arr[i]=left[j];
-                j++;
-                i++;
-            }
+            arr[i]=left[j];
+            j++;
+            i++;
+
         }
     }
 }

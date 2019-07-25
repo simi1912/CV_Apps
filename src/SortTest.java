@@ -14,20 +14,43 @@ public class SortTest {
 
     public static void main(String[] args){
 
-        int[] test = {-5,3,0,1};
+        int[][] tests = {
+                {1,2,3,4,5},
+                {5,4,3,2,1},
+                {1,1,1,1,0},
+                {1,1,1,0,1},
+                {1,1,0,1,1},
+                {1,0,1,1,1},
+                {0,1,1,1,1},
+                {1,-1,-100,1,100},
+                {1,1,1,1,2},
+                {1,1,1,2,1},
+                {1,1,2,1,1},
+                {1,2,1,1,1},
+                {2,1,1,1,1}
+        };
 
         SortFactory factory = new SortFactory();
 
-        factory.registerAlgo("insertion", new InsertionSort() );
 
-        SortAlgo bubbleSort = factory.getAlgo("insertion");
+        factory.registerAlgo("bubble", new BubbleSort());
+        factory.registerAlgo("select", new SelectSort());
+        factory.registerAlgo("insertion", new InsertionSort());
+        factory.registerAlgo("merge", new MergeSort() );
 
-        int[] result = bubbleSort.sort(test);
+        for(int i=0; i<tests.length; i++){
 
+            int[] result1 = factory.getAlgo("merge").sort(tests[i]);
 
-        for(int i = 0; i<result.length; i++){
-            System.out.println(result[i]);
+            for(int tePrint: result1){
+                System.out.print(tePrint);
+            }
+            System.out.println();
         }
 
+
+//        for(int i = 0; i<result.length; i++){
+//            System.out.print(result[i]+" ");
+//        }
     }
 }
